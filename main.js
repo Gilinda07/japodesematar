@@ -24,6 +24,7 @@ function aumentaTamanho(){
 
 const campoSenha = document.querySelector('#campo-senha');
 const checkbox = document.querySelectorAll('.checkbox');
+const forcaSenha = document.querySelector('.forca');
 
 for(i = 0; i < checkbox.length; i++){
     checkbox[i].onclick = geraSenha;
@@ -61,4 +62,16 @@ if(checkbox[3].checked){
         senha = senha + alfabeto[numeroAleatorio];
     }
     campoSenha.value = senha;
+    clasificaSenha();
+}
+
+function clasificaSenha(){
+    forcaSenha.classList.remove('fraca', 'media', 'forte');
+    if(tamanhoSenha > 11){
+        forcaSenha.classList.add('forte');
+    }else if(tamanhoSenha > 5 && tamanhoSenha <12){
+        forcaSenha.classList.add('media');
+    }else if(tamanhoSenha <=5){
+        forcaSenha.classList.add('fraca');
+    }
 }
